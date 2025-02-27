@@ -1,14 +1,15 @@
 import './App.css';
-import Product from './components/Product';
-import data from './data';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import HomeScreen from './screens/HomeScreen';
+import {BrowserRouter,Routes,Route}from 'react-router-dom'
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="grid-container">
     <header className="row">
       <div>
-        <a className="brand" href="/">amazona</a>
+        <a className="brand" href="/">Mon projet</a>
       </div>
       <div>
         <a href="/cart">Cart</a>
@@ -16,18 +17,13 @@ function App() {
       </div>
     </header>
     <main>
-      <div>
-        <div className="row center">
-        {data.products.map((product) => (
-         <Product product={product}/>
-        ))}
-         
-          
-        </div>
-      </div>
+      <Routes>
+        <Route path='/' element={<HomeScreen/>}></Route>
+      </Routes>
     </main>
     <footer className="row center">All right reserved</footer>
   </div>
+  </BrowserRouter>
   );
 }
 

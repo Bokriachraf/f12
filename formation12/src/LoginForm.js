@@ -8,7 +8,11 @@ export class  LoginFormC extends React.Component {
     componentDidMount(){
         console.log('class component did mount')
     }
-    componentDidUpdate(){
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.email !== this.state.email){
+            console.log('class component: email did update')
+
+        }
         console.log('class component did update')
     }
     componentWillUnmount(){
@@ -37,6 +41,24 @@ export class  LoginFormC extends React.Component {
 export function LoginFormF (){
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('')
+    
+   useEffect (()=>{
+console.log('function component did mount')
+return () => {
+    console.log('function component will unmount')
+
+}
+   },[])
+   useEffect (()=>{
+    if(email=== '')
+        return;
+    console.log('function component did update')
+       })
+   useEffect (()=>{
+    if(email=== '')
+        return;
+    console.log('function component: email did update')
+       },[email])
 
     function handleEmail(e){    
            setEmail(e.target.value)       
