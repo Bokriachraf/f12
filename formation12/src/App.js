@@ -2,6 +2,7 @@ import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomeScreen from './screens/HomeScreen';
 import {BrowserRouter,Routes,Route}from 'react-router-dom'
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
     <main>
       <Routes>
         <Route path='/' element={<HomeScreen/>}></Route>
+        <Route path='/product/:id' element={<ProductScreen/>}></Route>
+
       </Routes>
     </main>
     <footer className="row center">All right reserved</footer>
