@@ -1,0 +1,26 @@
+{
+  "name": "f12",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bokriachraf/f12.git"
+  },
+  "author": "achraf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bokriachraf/f12/issues"
+  },
+  "homepage": "https://github.com/Bokriachraf/f12#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
