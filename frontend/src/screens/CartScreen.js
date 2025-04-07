@@ -1,9 +1,11 @@
 import React, { useEffect }  from 'react';
-import {useParams,useLocation, Link} from 'react-router-dom';
-import { addToCart } from '../actions/cartActions';
+import {useParams,useLocation, Link, useNavigate} from 'react-router-dom';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
+import MessageBox from '../components/MessageBox';
  
- export default function CartScreen(props) {
+ export default function CartScreen() {
+     const navigate = useNavigate();
      const params = useParams();
      const productId = params.id;
      const {search} =useLocation();
@@ -12,14 +14,17 @@ import { useDispatch, useSelector } from 'react-redux';
       
        const cart = useSelector(state => state.cart)
        const {cartItems} = cart
-     const dispatch= useDispatch
+     const dispatch= useDispatch()
      useEffect(() => {
       if (productId){
         dispatch(addToCart(productId, qty))
       }
           },[dispatch, productId, qty])
 const removeFromCartHandler = (id) => {
-
+dispatch(removeFromCart(id))
+}
+const checkoutHandler =() => {
+  navigate('/signin?redirect=shipping')
 }
      return (
          <div className='row top'>
@@ -48,8 +53,7 @@ const removeFromCartHandler = (id) => {
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(
-                          addToCart(item.product),
-                          Number(e.target.value)
+                          addToCart(item.product), Number(e.target.value)
                         )
                       }
                       >
@@ -81,6 +85,28 @@ const removeFromCartHandler = (id) => {
           )
           }
          </div>
+          <div className='col-1'>
+            <div className='card card-body'>
+             <ul>
+              <li>
+                <h2>
+                  subtotal ({cartItems.reduce((a,c) => a + c.qty, 0)} items) : $
+                  {cartItems.reduce((a,c) => a + c.price * c.qty, 0)}
+                </h2>     
+               <li>
+                <button type='button'
+                onClick={checkoutHandler}
+                className='primary block'
+                disabled={cartItems.length === 0}
+                >
+               Proceed to checkout
+                </button>
+               </li>
+              </li>
+             </ul>
+            </div>
+
+          </div>
          </div>
        );
      }
