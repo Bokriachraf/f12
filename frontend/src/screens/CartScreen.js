@@ -93,6 +93,7 @@ const checkoutHandler =() => {
                   subtotal ({cartItems.reduce((a,c) => a + c.qty, 0)} items) : $
                   {cartItems.reduce((a,c) => a + c.price * c.qty, 0)}
                 </h2>     
+               </li>
                <li>
                 <button type='button'
                 onClick={checkoutHandler}
@@ -102,7 +103,6 @@ const checkoutHandler =() => {
                Proceed to checkout
                 </button>
                </li>
-              </li>
              </ul>
             </div>
 
