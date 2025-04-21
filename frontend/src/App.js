@@ -1,8 +1,9 @@
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomeScreen from './screens/HomeScreen';
-import {BrowserRouter,Routes,Route,Link}from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import {BrowserRouter,Routes,Route,Link}from 'react-router-dom';
+import { signout } from './actions/userActions';
+import { useDispatch,useSelector } from 'react-redux';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
 import SigninScreen from './screens/SigninScreen';
@@ -12,8 +13,10 @@ function App() {
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const {userInfo} = userSignin;
+  const dispatch = useDispatch();
+
   const signoutHandler = () => {
-    
+    dispatch(signout());
   }
 
   return (
@@ -33,14 +36,16 @@ function App() {
             {
               userInfo ? (
                 <div className='dropdown'>
-                <Link to="#">{userInfo.name}<i className='fa fa-caret-down'></i></Link>
+                <Link to="#">{userInfo.name}<i className='fa fa-caret-down'></i>{' '}
+                </Link>
                 <ul className='dropdown-content'>
+                  <li>
                   <Link to="#signout" onClick={signoutHandler}>
                   Sign Out
                   </Link>
+                  </li>
                 </ul>
-                </div>
-              
+                </div>              
               ):(
                 <Link to="/signin">Sign In</Link>
               )
