@@ -85,7 +85,7 @@ export default function RegisterScreen() {
             </div>
             <div>
                Already have an account?
-                <Link to="/signin">Sign-in</Link>
+                <Link to={`/signin?redirect=${redirect}`}>Sign-in</Link>
             </div>
         </form>
     </div>

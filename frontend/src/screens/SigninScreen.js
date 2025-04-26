@@ -58,7 +58,7 @@ export default function SigninScreen() {
             </div>
             <div>
                 New customer? {' '}
-                <Link to="/register">Create your account</Link>
+                <Link to={`/register?redirect=${redirect}`}>Create your account</Link>
             </div>
         </form>
     </div>
