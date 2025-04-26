@@ -23,3 +23,8 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
   });
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.carItems))
 }
+
+export const saveShippingAddress = (data) =>(dispatch) => {
+  dispatch({ type : CART_SAVE_SHIPPING_ADDRESS, payload: data});
+  localStorage.setItem('shippingAdress', JSON.stringify(data))
+}
