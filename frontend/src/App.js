@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import {BrowserRouter,Routes,Route,Link}from 'react-router-dom';
 import { signout } from './actions/userActions';
 import { useDispatch,useSelector } from 'react-redux';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -64,6 +65,7 @@ function App() {
         <Route path='/register' element={<RegisterScreen/>}></Route>
         <Route path='/signin/shipping' element={<ShippingAdressScreen/>}></Route>
         <Route path='/payment' element={<PaymentMethodScreen/>}></Route>
+        <Route path='/placeorder' element={<PlaceOrderScreen/>}></Route>
 
 
       </Routes>
