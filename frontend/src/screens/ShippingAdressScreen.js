@@ -10,6 +10,7 @@ export default function ShippingAdressScreen() {
     const { userInfo } = userSignin;
     const cart = useSelector(state => state.cart)
     const {shippingAddress} = cart;
+    console.log('🔍 shippingAddress:', shippingAddress);
     if (!userInfo) {
         navigate('/signin')
     }
